@@ -1,6 +1,9 @@
 <template>
-  <div class="sheet-container">
-      <textarea @click="getSelection" @keydown="logKey" class="sheet-text" ref="sheet">
+  <div @keydown.meta="getSelection" class="sheet-container">
+      <h4>
+         {{ title }} 
+      </h4>
+      <textarea @mouseup="getSelection" @keyup="logKey" class="sheet-text" ref="sheet">
 
       </textarea>
   </div>
@@ -9,30 +12,32 @@
 <script>
 export default {
     components: {},
-    props: [],
+    props: ['title'],
     data() {
         return {
-            text: '',
-            snippet: ''
+            text: ''
         }
     },
     methods: {
-        logKey(k) {
-            this.text += k.key;
+        logKey() {
+            this.text = this.$refs.sheet.value;
         },
         getSelection() {
-            let s = window.getSelection();
-            this.snippet = s.toString();
+            let selection = window.getSelection();
+            let selectedString = selection.toString();
+            this.$store.commit('update', selectedString);
+            selectedString.length > 0 ? console.log(selectedString) : null;
         }
     },
     computed: {
-
+  
     }
 }
 </script>
 
 <style>
     .sheet-container {
+        display: inline-block;
         width: 480px;
         height: 640px;
         padding: 10px;
@@ -44,7 +49,7 @@ export default {
         display: block;
         max-width: 100%;
         width: 100%;
-        height: 100%;
+        height: 90%;
         padding: 10px;
         border: none;
         border-radius: 6px;

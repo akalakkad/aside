@@ -1,7 +1,7 @@
 <template>
   <div class="workspace-container">
       <ToolBar></ToolBar>
-      <Thread></Thread>
+      <Thread :sheets="this.$store.state.asides"></Thread>
   </div>
 </template>
 
@@ -24,6 +24,6 @@ export default {
     .workspace-container {
         width: 100%;
         height: auto;
-        
+
     }
 </style>
