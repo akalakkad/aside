@@ -13,7 +13,7 @@ export default {
 <style>
     .toolbar-container {
         width: 100%;
-        height: 10px;
+        height: 50px;
         border-bottom: solid lightgrey 1px;
     }
 </style>

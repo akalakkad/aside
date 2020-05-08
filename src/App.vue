@@ -1,14 +1,14 @@
 <template>
   <div class="app-container">
-    <ToolBar></ToolBar>
+    <Workspace></Workspace>
   </div>
 </template>
 
 <script>
-import ToolBar from '@/components/ToolBar';
+import Workspace from '@/views/Workspace';
 
 export default {
-  components: { ToolBar },
+  components: { Workspace },
   props: [],
   data() {
     return {};
@@ -17,6 +17,11 @@ export default {
 </script>
 
 <style>
+
+* {
+  box-sizing: border-box;
+}
+
 html {
   width: 100%;
   min-height: 100%;
