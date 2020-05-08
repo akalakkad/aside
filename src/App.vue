@@ -1,29 +1,29 @@
 <template>
   <div class="app-container">
-
+    <ToolBar></ToolBar>
   </div>
 </template>
 
 <script>
+import ToolBar from '@/components/ToolBar';
+
 export default {
-  components: {},
+  components: { ToolBar },
   props: [],
   data() {
-    return {
-      
-    }
+    return {};
   }
-}
+};
 </script>
 
 <style>
-  html {
-    width: 100%;
-    min-height: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-  }
+html {
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
 
 body {
   width: 100%;
@@ -39,5 +39,4 @@ body {
   height: 100%;
   padding: 0;
 }
-
 </style>
