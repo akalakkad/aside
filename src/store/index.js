@@ -23,10 +23,11 @@ const store = new Vuex.Store({
             state.snippet = s;
         },
         addAside(state, h) {
+            let r = Math.random().toString(36).substring(7);
             let aside = {
                 title: state.snippet,
-                hash: 'afasfc',
-                body: '',
+                hash: r,
+                body: 'this is a new message',
                 parent: [h],
                 child: []
             }

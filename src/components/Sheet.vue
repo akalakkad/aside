@@ -1,13 +1,16 @@
 <template>
   <div @keydown.meta="getSelection" class="sheet-container">
     <div class="sheettitle-box">
-      <h2 class="sheet-title">{{ data.title }}</h2>
+      <h2 :contenteditable="true" class="sheet-title">{{ data.title }}</h2>
       <EditButton @click.native="toggleEdit"></EditButton>
     </div>
-    <span v-show="!edit" class="sheet-text">
-        {{ data.body }}
-    </span>
 
+    <div @mouseup="getSelection" :class="{'editor-active': edit}" class="sheet-editor" :contenteditable="edit">
+        {{data.body}}
+    </div>
+
+    {{data.body}}
+<!-- 
     <textarea
       v-model="$store.state.local"
       v-show="edit"
@@ -15,7 +18,7 @@
       @keyup="logKey"
       class="sheet-editor"
       ref="sheet"
-    ></textarea>
+    ></textarea> -->
   </div>
 </template>
 
@@ -28,18 +31,10 @@ export default {
   data() {
     return {
       text: "",
-      hash: this.data.hash,
-      edit: true,
-      local: this.data.body
+      edit: true
     };
   },
-  mounted() {
-    this.$refs.sheet.value = this.data.body;
-  },
   methods: {
-    logKey() {
-      this.text = this.$refs.sheet.value;
-    },
     getSelection() {
       let selection = window.getSelection();
       let selectedString = selection.toString();
@@ -48,9 +43,11 @@ export default {
     },
     toggleEdit() {
       if (this.edit) {
+
+        
         console.log("saving");
-        console.log(this.$store.state.local)
-        this.$store.commit("saveSheet", { h: this.hash, b: this.$store.state.local });
+        console.log(this.$store.state.asides);
+        this.$store.commit("saveSheet", { h: this.data.hash, b: ""});
       }
 
       this.edit = !this.edit;
@@ -101,9 +98,13 @@ export default {
   padding: 10px;
   border: none;
   border-radius: 6px;
-  background-color: #e6f2fc;
+  background-color: #fff;
   resize: none;
   outline: none;
   font-size: 16px;
+}
+
+.editor-active {
+    background-color: #e6f2fc;
 }
 </style>

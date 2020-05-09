@@ -18,7 +18,7 @@ export default {
     methods: {
         newAside() {
            if(this.$store.state.snippet !== '') {
-                this.$store.commit('addAside');
+                this.$store.commit('addAside', this.$store.state.current);
                 this.$store.commit('update', '');
            }
         }
