@@ -1,7 +1,7 @@
 <template>
   <div class="workspace-container">
       <ToolBar></ToolBar>
-      <Thread :sheetData="this.$store.state.asides[0]"></Thread>
+      <Thread :sheetData="currentSheet"></Thread>
   </div>
 </template>
 
@@ -15,6 +15,15 @@ export default {
     data() {
         return {
 
+        }
+    },
+    computed: {
+        currentSheet() {
+            let cIdx = this.$store.state.asides.findIndex(element => {
+                return element.hash === this.$store.state.current;
+            });
+
+            return this.$store.state.asides[cIdx];
         }
     }
 }

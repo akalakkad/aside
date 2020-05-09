@@ -10,18 +10,35 @@ const store = new Vuex.Store({
             {
                 title: 'This is a sheet',
                 hash: 'hgFHgc',
+                body: '',
                 parent: [],
                 child: []
             }
         ],
-        // current: this.state.asides[0]       
+        current: 'hgFHgc',
+        local: ''
     },
     mutations: {
         update(state, s) {
             state.snippet = s;
         },
-        addAside(state) {
-            state.asides.push({title: state.snippet});
+        addAside(state, h) {
+            let aside = {
+                title: state.snippet,
+                hash: 'afasfc',
+                body: '',
+                parent: [h],
+                child: []
+            }
+            state.asides.push(aside);
+            state.current = aside.hash;
+            state.local = aside.body;
+        },
+        saveSheet(state, payload) {
+            let cIdx = state.asides.findIndex(element => {
+                return element.hash === payload.h;
+            });
+            state.asides[cIdx].body = payload.b;
         }
     }
 })
