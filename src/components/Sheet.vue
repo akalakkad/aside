@@ -5,20 +5,10 @@
       <EditButton @click.native="toggleEdit"></EditButton>
     </div>
 
-    <div @mouseup="getSelection" :class="{'editor-active': edit}" class="sheet-editor" :contenteditable="edit">
+    <div @keyup="autoSave" @mouseup="getSelection" :class="{'editor-active': edit}" class="sheet-editor" :contenteditable="edit" ref="sheet">
         {{data.body}}
     </div>
-
-    {{data.body}}
-<!-- 
-    <textarea
-      v-model="$store.state.local"
-      v-show="edit"
-      @mouseup="getSelection"
-      @keyup="logKey"
-      class="sheet-editor"
-      ref="sheet"
-    ></textarea> -->
+    
   </div>
 </template>
 
@@ -31,7 +21,8 @@ export default {
   data() {
     return {
       text: "",
-      edit: true
+      edit: true,
+      throttle: null
     };
   },
   methods: {
@@ -47,11 +38,27 @@ export default {
         
         console.log("saving");
         console.log(this.$store.state.asides);
-        this.$store.commit("saveSheet", { h: this.data.hash, b: ""});
+        this.$store.commit("saveSheet", { h: this.data.hash, b: this.$refs.sheet.innerHTML});
       }
 
       this.edit = !this.edit;
+    },
+    saveContents() {
+        if (this.edit) {
+            console.log("saving");
+            console.log(this.$store.state.asides);
+            this.$store.commit("saveSheet", { h: this.data.hash, b: this.$refs.sheet.innerHTML});
+        }
+    },
+    autoSave() {
+        clearTimeout(this.throttle);
+        this.throttle = setTimeout(this.saveContents, 3000);
     }
+  },
+  watch: {
+      data: function() {
+          this.$refs.sheet.innerHTML = this.data.body;
+      }
   }
 };
 </script>

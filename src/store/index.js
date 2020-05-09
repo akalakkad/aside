@@ -27,7 +27,7 @@ const store = new Vuex.Store({
             let aside = {
                 title: state.snippet,
                 hash: r,
-                body: 'this is a new message',
+                body: '',
                 parent: [h],
                 child: []
             }
