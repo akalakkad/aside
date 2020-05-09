@@ -1,7 +1,7 @@
 <template>
   <div class="workspace-container">
       <ToolBar></ToolBar>
-      <Thread :sheets="this.$store.state.asides"></Thread>
+      <Thread :sheetData="this.$store.state.asides[0]"></Thread>
   </div>
 </template>
 

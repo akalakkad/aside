@@ -1,7 +1,7 @@
 <template>
-  <div @keydown.meta="getSelection" class="sheet-container">
+  <div @click="getHash" @keydown.meta="getSelection" class="sheet-container">
       <h4>
-         {{ title }} 
+         {{ data.title }} 
       </h4>
       <textarea @mouseup="getSelection" @keyup="logKey" class="sheet-text" ref="sheet">
 
@@ -12,10 +12,11 @@
 <script>
 export default {
     components: {},
-    props: ['title'],
+    props: ['data'],
     data() {
         return {
-            text: ''
+            text: '',
+            hash: this.data.hash
         }
     },
     methods: {
@@ -27,6 +28,9 @@ export default {
             let selectedString = selection.toString();
             this.$store.commit('update', selectedString);
             selectedString.length > 0 ? console.log(selectedString) : null;
+        },
+        getHash() {
+            alert(this.hash);
         }
     },
     computed: {

@@ -1,8 +1,8 @@
 <template>
   <div class="thread-container">
-      <div style="display: inline-block" v-for="s in sheets" :key="s.title">
-          <Sheet :title="s.title"></Sheet>
-      </div>
+      <!-- <div style="display: inline-block" v-for="s in sheets" :key="s.title"> -->
+          <Sheet :data="sheetData"></Sheet>
+      <!-- </div> -->
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 import Sheet from '@/components/Sheet';
 export default {
     components: {Sheet},
-    props: ['sheets'],
+    props: ['sheetData'],
     data() {
         return {
 

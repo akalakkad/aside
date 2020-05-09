@@ -8,9 +8,13 @@ const store = new Vuex.Store({
         snippet: '',
         asides: [
             {
-                title: 'This is a sheet'
+                title: 'This is a sheet',
+                hash: 'hgFHgc',
+                parent: [],
+                child: []
             }
-        ]        
+        ],
+        // current: this.state.asides[0]       
     },
     mutations: {
         update(state, s) {
