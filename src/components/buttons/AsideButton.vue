@@ -1,7 +1,7 @@
 <template>
   <div class="asidebutton-container">
       <button @click="newAside" class="asidebutton">
-          ✂︎ CREATE
+          ✂︎
       </button>
   </div>
 </template>
@@ -28,21 +28,21 @@ export default {
 
 <style>
     .asidebutton-container {
-        min-width: 150px;
+        min-width: 40px;
         width: auto;
-        height: auto;        
+        height: 40px;        
     }
 
     .asidebutton {
         width: 100%;
         height: auto;
         padding: 10px;
-        background-color: mediumseagreen;
+        background-color: #e6f2fc;
         border: none;
         border-radius: 100px;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 18px;
-        color: white;
+        color: #3a4891;
         outline: none;
     }
 

@@ -1,14 +1,14 @@
 <template>
   <div @keydown.meta="getSelection" class="sheet-container">
     <div class="sheettitle-box">
-      <h2 :contenteditable="true" class="sheet-title">{{ data.title }}</h2>
+      <h2 class="sheet-title">{{ data.title }}</h2>
       <EditButton @click.native="toggleEdit"></EditButton>
     </div>
 
     <div @keyup="autoSave" @mouseup="getSelection" :class="{'editor-active': edit}" class="sheet-editor" :contenteditable="edit" ref="sheet">
         {{data.body}}
     </div>
-    
+
   </div>
 </template>
 
@@ -34,21 +34,15 @@ export default {
     },
     toggleEdit() {
       if (this.edit) {
-
-        
-        console.log("saving");
-        console.log(this.$store.state.asides);
-        this.$store.commit("saveSheet", { h: this.data.hash, b: this.$refs.sheet.innerHTML});
+        this.saveContents();
       }
 
       this.edit = !this.edit;
     },
     saveContents() {
-        if (this.edit) {
-            console.log("saving");
-            console.log(this.$store.state.asides);
-            this.$store.commit("saveSheet", { h: this.data.hash, b: this.$refs.sheet.innerHTML});
-        }
+        console.log("saving");
+        console.log(this.$store.state.asides);
+        this.$store.commit("saveSheet", { h: this.data.hash, b: this.$refs.sheet.innerHTML});
     },
     autoSave() {
         clearTimeout(this.throttle);
@@ -66,8 +60,8 @@ export default {
 <style>
 .sheet-container {
   display: inline-block;
-  width: 480px;
-  height: 640px;
+  width: 50%;
+  height: 100%;
   padding: 10px;
   border: solid #5a97e6 1px;
   border-radius: 12px;
@@ -101,17 +95,18 @@ export default {
   display: block;
   max-width: 100%;
   width: 100%;
-  height: 80%;
-  padding: 10px;
+  height: 90%;
+  padding: 0px;
   border: none;
   border-radius: 6px;
   background-color: #fff;
   resize: none;
   outline: none;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .editor-active {
     background-color: #e6f2fc;
+    padding: 10px;
 }
 </style>
