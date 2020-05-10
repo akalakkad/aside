@@ -1,8 +1,8 @@
 <template>
   <div class="thread-container">
-      <!-- <div style="display: inline-block" v-for="s in sheets" :key="s.title"> -->
+
           <Sheet :data="sheetData"></Sheet>
-      <!-- </div> -->
+
   </div>
 </template>
 
