@@ -1,6 +1,6 @@
 <template>
   <div class="editbutton-container">
-        <i style="font-size: 20px;" class="material-icons edit-button">
+        <i style="font-size: 20px;"  :class="{'edit-active': state}"  class="material-icons edit-button">
             edit
         </i>
   </div>
@@ -9,7 +9,7 @@
 <script>
 export default {
     components: {},
-    props: [],
+    props: ['state'],
     data() {
         return {
 
@@ -20,7 +20,6 @@ export default {
 
 <style>
     .editbutton-container {
-        display: inline-block;
         width: auto;
         height: auto;
 
@@ -36,10 +35,12 @@ export default {
         padding: 5px;
         border: none;
         border-radius: 100px;
-        background-color: #e6f2fc;
-        font-size: 12px;
+        background-color: transparent;
+        font-size: 16px;
         color: #3a4891;
+    }
 
-
+    .edit-active {
+        background-color: #e6f2fc;
     }
 </style>

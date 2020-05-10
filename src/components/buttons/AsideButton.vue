@@ -1,7 +1,12 @@
 <template>
   <div class="asidebutton-container">
       <button @click="newAside" class="asidebutton">
-          ✂︎
+        <i style="font-size: 20px;" class="material-icons">
+            add_circle
+        </i>
+        <span style="margin-left: 10px;">
+            Add aside
+        </span>
       </button>
   </div>
 </template>
@@ -34,6 +39,9 @@ export default {
     }
 
     .asidebutton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 100%;
         height: auto;
         padding: 10px;
@@ -41,7 +49,7 @@ export default {
         border: none;
         border-radius: 100px;
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 18px;
+        font-size: 16px;
         color: #3a4891;
         outline: none;
     }

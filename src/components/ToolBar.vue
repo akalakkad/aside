@@ -1,5 +1,8 @@
 <template>
   <div class="toolbar-container">
+      <span style="font-size: 24px">
+          My Thread
+      </span>
       <AsideButton></AsideButton>
   </div>
 </template>
@@ -20,11 +23,12 @@ export default {
 <style>
     .toolbar-container {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
         width: 100%;
-        height: 50px;
-        padding: 25px;
-        border-bottom: solid lightgrey 1px;
+        min-height: 40px;
+        height: 10%;
+        padding: 10px;
+        margin: auto;
     }
 </style>

@@ -8,7 +8,7 @@ const store = new Vuex.Store({
         snippet: '',
         asides: [
             {
-                title: 'This is a sheet',
+                title: 'My Sheet',
                 hash: 'hgFHgc',
                 body: '',
                 parent: [],
