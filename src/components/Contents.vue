@@ -25,4 +25,5 @@ export default {
         width: 40%;
         height: auto;
     }
+    
 </style>

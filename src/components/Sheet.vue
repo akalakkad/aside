@@ -1,7 +1,7 @@
 <template>
   <div @keydown.meta="getSelection" class="sheet-container">
     <div class="sheettitle-box">
-        <h2 class="sheet-title">{{ data.title }}</h2>
+        <h2 @keyup="autoSave" :contenteditable="edit" class="sheet-title" :class="{'editor-active': edit}" ref="title">{{ data.title }}</h2>
         <div style="display: flex; justify-content: flex-start;">
             <EditButton @click.native="toggleEdit" :state="edit"></EditButton>
             <Save :icon="saveState ? 'cloud_upload' : 'cloud_done' "></Save>
@@ -47,7 +47,7 @@ export default {
     saveContents() {
         console.log("saving");
         console.log(this.$store.state.asides);
-        this.$store.commit("saveSheet", { h: this.data.hash, b: this.$refs.sheet.innerHTML});
+        this.$store.commit("saveSheet", {h: this.data.hash, t: this.$refs.title.innerHTML,  b: this.$refs.sheet.innerHTML});
         this.saveState = false;
     },
     autoSave() {
@@ -59,6 +59,7 @@ export default {
   watch: {
       data: function() {
           this.$refs.sheet.innerHTML = this.data.body;
+          this.$refs.title.innerHTML = this.data.title;
       }
   }
 };
@@ -88,6 +89,7 @@ export default {
 .sheet-title {
   display: inline-block;
   margin: 0;
+  border-radius: 6px;
   color: #3a4891;
 }
 

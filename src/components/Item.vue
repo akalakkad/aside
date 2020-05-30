@@ -28,8 +28,14 @@ export default {
         height: auto;
         padding: 15px;
         margin-bottom: 5px;
-        background-color: #e6f2fc;
+        background-color: #fff;
+        border: solid #5a97e6 1px;
         border-radius: 6px;
         color: #3a4891;
+    }
+
+    .item-container:hover {
+        border: solid #5a97e600 1px;
+        background-color: #e6f2fc;
     }
 </style>

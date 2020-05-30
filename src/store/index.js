@@ -40,6 +40,7 @@ const store = new Vuex.Store({
                 return element.hash === payload.h;
             });
             state.asides[cIdx].body = payload.b;
+            state.asides[cIdx].title = payload.t;
         }
     }
 })
