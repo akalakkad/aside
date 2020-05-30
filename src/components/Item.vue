@@ -1,21 +1,24 @@
 <template>
   <div @click="setHash" class="item-container">
-      {{ title }}
+      {{ data.title }}
   </div>
 </template>
 
 <script>
 export default {
     components: {},
-    props: ['title', 'hash'],
+    props: ['data'],
     data() {
         return {
 
         }
     },
+    mounted() {
+      console.log(this.data);  
+    },
     methods: {
         setHash() {
-            this.$store.state.current = this.hash;
+            this.$store.state.current = this.data.hash;
         }
     }
 }

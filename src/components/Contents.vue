@@ -1,7 +1,7 @@
 <template>
   <div class="contents-container">
-      <div v-for="i in $store.state.asides" :key="i.title">
-          <Item :title="i.title" :hash="i.hash"></Item>
+      <div v-for="c in content" :key="c.title">
+          <Item :data="c" ></Item>
       </div>
   </div>
 </template>
@@ -11,7 +11,7 @@ import Item from '@/components/Item';
 
 export default {
     components: { Item },
-    props: [],
+    props: ['content'],
     data() {
         return {
 
@@ -22,7 +22,7 @@ export default {
 
 <style>
     .contents-container {
-        width: 40%;
+        width: 100%;
         height: auto;
     }
     

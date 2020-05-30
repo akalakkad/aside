@@ -1,9 +1,15 @@
 <template>
   <div class="thread-container">
 
-        <Sheet :data="sheetData"></Sheet>
+    <Sheet :data="sheetData"></Sheet>
+    <div style="width: 40%;">
+        Parent
+        <Contents :content="sheetData.parent"></Contents>
+        <br />
+        Child
+        <Contents :content="sheetData.child"></Contents>
 
-        <Contents></Contents>
+    </div>
   </div>
 </template>
 
