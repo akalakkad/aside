@@ -91,6 +91,7 @@ export default {
   margin: 0;
   border-radius: 6px;
   color: #3a4891;
+  outline: none;
 }
 
 .sheet-text {
