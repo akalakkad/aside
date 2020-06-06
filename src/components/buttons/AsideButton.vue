@@ -26,8 +26,11 @@ export default {
     methods: {
         newAside() {
            if(this.$store.state.snippet !== '') {
-                db.ref('sheets').push({title: this.$store.state.snippet, body: ""})
+                db.ref('sheets').push({title: this.$store.state.snippet, body: "", parent: this.$store.state.currentSheet})
                 .then(res => {
+
+
+                    db.ref('sheets/' + this.$store.state.currentSheet).update({child: res.key});
                     this.$store.state.currentSheet = res.key;
                 });
            }
