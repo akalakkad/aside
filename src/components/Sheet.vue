@@ -1,5 +1,5 @@
 <template>
-  <div @keydown.meta="getSelection" class="sheet-container">
+  <div v-if="data.title" @keydown.meta="getSelection" class="sheet-container">
     <div class="sheettitle-box">
         <h2 @keyup="autoSave" :contenteditable="edit" class="sheet-title" :class="{'editor-active': edit}" ref="title">{{ data.title }}</h2>
         <div style="display: flex; justify-content: flex-start;">
@@ -19,6 +19,7 @@
 import EditButton from "@/components/buttons/EditButton.vue";
 import Save from '@/components/states/Save';
 
+import {db} from '@/fb/index';
 
 export default {
   components: { EditButton, Save },
@@ -46,10 +47,10 @@ export default {
       this.edit = !this.edit;
     },
     saveContents() {
-        console.log("saving");
-        console.log(this.$store.state.asides);
-        this.$store.commit("saveSheet", {h: this.data.hash, t: this.$refs.title.innerHTML,  b: this.$refs.sheet.innerHTML});
-        this.saveState = false;
+      db.ref('sheets/' + this.$store.state.currentSheet).update({title: this.$refs.title.innerHTML, body: this.$refs.sheet.innerHTML})
+      .then(() => {
+        console.log("updated text to firebase");
+      });
     },
     autoSave() {
         clearTimeout(this.throttle);

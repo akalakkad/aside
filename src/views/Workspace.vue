@@ -1,7 +1,7 @@
 <template>
   <div class="workspace-container">
       <ToolBar></ToolBar>
-      <Thread :sheetData="sheets[0]"></Thread>
+      <Thread :sheetData="currentSheet"></Thread>
   </div>
 </template>
 
@@ -22,16 +22,13 @@ export default {
     firebase: {
         sheets: db.ref('sheets')
     },
-    mounted() {
-        console.log(this.sheets);
-    },
     computed: {
         currentSheet() {
-            let cIdx = this.$store.state.asides.findIndex(element => {
-                return element.hash === this.$store.state.current;
+            let cIdx = this.sheets.findIndex(element => {
+                return element['.key'] === this.$store.state.currentSheet;
             });
 
-            return this.$store.state.asides[cIdx];
+            return this.sheets[cIdx];
         }
     }
 }
