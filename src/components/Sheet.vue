@@ -19,6 +19,7 @@
 import EditButton from "@/components/buttons/EditButton.vue";
 import Save from '@/components/states/Save';
 
+
 export default {
   components: { EditButton, Save },
   props: ["data"],
@@ -55,12 +56,6 @@ export default {
         this.saveState = true;
         this.throttle = setTimeout(this.saveContents, 1000);
     }
-  },
-  watch: {
-      data: function() {
-          this.$refs.sheet.innerHTML = this.data.body;
-          this.$refs.title.innerHTML = this.data.title;
-      }
   }
 };
 </script>

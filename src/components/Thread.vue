@@ -2,23 +2,23 @@
   <div class="thread-container">
 
     <Sheet :data="sheetData"></Sheet>
-    <div style="width: 40%;">
+    <!-- <div style="width: 40%;">
         Parent
-        <Contents :content="sheetData.parent"></Contents>
+        <Contents v-if="sheetData.parent" :content="sheetData.parent"></Contents>
         <br />
         Child
-        <Contents :content="sheetData.child"></Contents>
+        <Contents v-if="sheetData.child" :content="sheetData.child"></Contents>
 
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import Sheet from '@/components/Sheet';
-import Contents from '@/components/Contents';
+// import Contents from '@/components/Contents';
 
 export default {
-    components: { Sheet, Contents },
+    components: { Sheet },
     props: ['sheetData'],
     data() {
         return {

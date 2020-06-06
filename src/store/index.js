@@ -16,6 +16,7 @@ const store = new Vuex.Store({
             }
         ],
         current: 'hgFHgc',
+        currentSheet: "mysheet",
         local: ''
     },
     mutations: {

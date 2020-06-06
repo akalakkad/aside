@@ -1,7 +1,7 @@
 <template>
   <div class="workspace-container">
       <ToolBar></ToolBar>
-      <Thread :sheetData="currentSheet"></Thread>
+      <Thread :sheetData="sheets[0]"></Thread>
   </div>
 </template>
 
@@ -9,13 +9,21 @@
 import ToolBar from '@/components/ToolBar';
 import Thread from '@/components/Thread';
 
+import {db} from '@/fb/index';
+
 export default {
     components: {ToolBar, Thread},
     props: [],
     data() {
         return {
-
+            sheets: []
         }
+    },
+    firebase: {
+        sheets: db.ref('sheets')
+    },
+    mounted() {
+        console.log(this.sheets);
     },
     computed: {
         currentSheet() {
