@@ -12,6 +12,9 @@
 </template>
 
 <script>
+
+import {db} from '@/fb/index';
+
 export default {
     components: {},
     props: [],
@@ -23,11 +26,16 @@ export default {
     methods: {
         newAside() {
            if(this.$store.state.snippet !== '') {
-                this.$store.commit('addAside', this.$store.state.current);
-                this.$store.commit('update', '');
+                db.ref('sheets').push({title: this.$store.state.snippet, body: ""})
+                .then(res => {
+                    this.$store.state.currentSheet = res.key;
+                });
            }
         }
-    }
+    },
+    computed: {
+
+        }
 }
 </script>
 

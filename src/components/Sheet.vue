@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data.title" @keydown.meta="getSelection" class="sheet-container">
+  <div @keydown.meta="getSelection" class="sheet-container">
     <div class="sheettitle-box">
         <h2 @keyup="autoSave" :contenteditable="edit" class="sheet-title" :class="{'editor-active': edit}" ref="title">{{ data.title }}</h2>
         <div style="display: flex; justify-content: flex-start;">
@@ -49,7 +49,9 @@ export default {
     saveContents() {
       db.ref('sheets/' + this.$store.state.currentSheet).update({title: this.$refs.title.innerHTML, body: this.$refs.sheet.innerHTML})
       .then(() => {
+        this.saveState = false;
         console.log("updated text to firebase");
+
       });
     },
     autoSave() {
