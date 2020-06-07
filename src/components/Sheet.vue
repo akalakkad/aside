@@ -8,7 +8,7 @@
         </div>  
     </div>
 
-    <div @mouseup="getSelection" v-if="!edit" class="sheet-editor">
+    <div @mouseup="getSl" v-if="!edit" class="sheet-editor">
       
       {{sheetInfo.body}}
     
@@ -111,7 +111,7 @@ export default {
 .sheet-editor {
   display: block;
   width: 100%;
-  height: 80%;
+  height: 90%;
   padding: 0px;
   margin: 0;
   border: none;
