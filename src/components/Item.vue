@@ -1,6 +1,6 @@
 <template>
   <div @click="setHash" class="item-container">
-      {{ data.title }}
+      {{ data }}
   </div>
 </template>
 
@@ -13,12 +13,9 @@ export default {
 
         }
     },
-    mounted() {
-      console.log(this.data);  
-    },
     methods: {
         setHash() {
-            this.$store.state.current = this.data.hash;
+            this.$store.state.currentSheet = this.data;
         }
     }
 }

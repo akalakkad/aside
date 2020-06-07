@@ -1,7 +1,7 @@
 <template>
   <div class="contents-container">
-      <div v-for="c in content" :key="c.title">
-          <Item :data="c" ></Item>
+      <div v-for="c in content" :key="c.key">
+          <Item :data="c.key"></Item>
       </div>
   </div>
 </template>

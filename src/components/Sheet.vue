@@ -3,12 +3,12 @@
     <div class="sheettitle-box">
         <h2  @keyup="autoSave" :contenteditable="edit" class="sheet-title" :class="{'editor-active': edit}" ref="title">{{ sheetInfo.title }}</h2>
         <div style="display: flex; justify-content: flex-start;">
-            <EditButton @click.native="toggleEdit" :state="edit"></EditButton>
-            <Save :icon="saveState ? 'cloud_upload' : 'cloud_done' "></Save>
+          <EditButton @click.native="toggleEdit" :state="edit"></EditButton>
+          <Save :icon="saveState ? 'cloud_upload' : 'cloud_done' "></Save>
         </div>  
     </div>
 
-    <div @mouseup="getSl" v-if="!edit" class="sheet-editor">
+    <div @mouseup="getSelection" v-if="!edit" class="sheet-editor">
       
       {{sheetInfo.body}}
     
