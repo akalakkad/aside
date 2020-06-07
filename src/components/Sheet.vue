@@ -8,11 +8,15 @@
         </div>  
     </div>
 
-    <div @keyup="autoSave" @mouseup="getSelection" :class="{'editor-active': edit}" class="sheet-editor" :contenteditable="edit" ref="sheet">
+    <div @mouseup="getSelection" v-if="!edit" class="sheet-editor">
       
       {{sheetInfo.body}}
     
     </div>
+
+    <textarea :value="sheetInfo.body" v-if="edit" class="sheet-editor editor-active" ref="sheet">
+     
+    </textarea>
 
   </div>
 </template>
@@ -49,7 +53,7 @@ export default {
       this.edit = !this.edit;
     },
     saveContents() {
-      db.ref('sheets/' + this.$store.state.currentSheet).update({title: this.$refs.title.innerHTML, body: this.$refs.sheet.innerHTML})
+      db.ref('sheets/' + this.$store.state.currentSheet).update({title: this.$refs.title.innerHTML, body: this.$refs.sheet.value})
       .then(() => {
         this.saveState = false;
         console.log("updated text to firebase");
