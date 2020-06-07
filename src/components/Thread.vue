@@ -1,7 +1,7 @@
 <template>
   <div class="thread-container">
 
-    <Sheet :data="sheetData"></Sheet>
+    <Sheet :sheetInfo="sheetData"></Sheet>
     <!-- <div style="width: 40%;">
         Parent
         <Contents v-if="sheetData.parent" :content="sheetData.parent"></Contents>

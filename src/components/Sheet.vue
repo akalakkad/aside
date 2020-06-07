@@ -1,7 +1,7 @@
 <template>
   <div @keydown.meta="getSelection" class="sheet-container">
     <div class="sheettitle-box">
-        <h2 @keyup="autoSave" :contenteditable="edit" class="sheet-title" :class="{'editor-active': edit}" ref="title">{{ data.title }}</h2>
+        <h2  @keyup="autoSave" :contenteditable="edit" class="sheet-title" :class="{'editor-active': edit}" ref="title">{{ sheetInfo.title }}</h2>
         <div style="display: flex; justify-content: flex-start;">
             <EditButton @click.native="toggleEdit" :state="edit"></EditButton>
             <Save :icon="saveState ? 'cloud_upload' : 'cloud_done' "></Save>
@@ -9,7 +9,9 @@
     </div>
 
     <div @keyup="autoSave" @mouseup="getSelection" :class="{'editor-active': edit}" class="sheet-editor" :contenteditable="edit" ref="sheet">
-        {{data.body}}
+      
+      {{sheetInfo.body}}
+    
     </div>
 
   </div>
@@ -23,7 +25,7 @@ import {db} from '@/fb/index';
 
 export default {
   components: { EditButton, Save },
-  props: ["data"],
+  props: ["sheetInfo"],
   data() {
     return {
       text: "",

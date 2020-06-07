@@ -1,7 +1,7 @@
 <template>
   <div class="workspace-container">
       <ToolBar></ToolBar>
-      <Thread :sheetData="currentSheet"></Thread>
+      <Thread :sheetData="sheets[$store.state.currentSheet]"></Thread>
   </div>
 </template>
 
@@ -11,25 +11,18 @@ import Thread from '@/components/Thread';
 
 import {db} from '@/fb/index';
 
+let sheetsRef = db.ref('sheets');
+
 export default {
     components: {ToolBar, Thread},
     props: [],
     data() {
         return {
-            sheets: []
+            sheets: {}
         }
     },
     firebase: {
-        sheets: db.ref('sheets')
-    },
-    computed: {
-        currentSheet() {
-            let cIdx = this.sheets.findIndex(element => {
-                return element['.key'] === this.$store.state.currentSheet;
-            });
-
-            return this.sheets[cIdx];
-        }
+        sheets: sheetsRef
     }
 }
 </script>
