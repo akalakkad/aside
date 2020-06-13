@@ -1,6 +1,6 @@
 <template>
   <div @click="setHash" class="item-container">
-      {{ data }}
+      {{ sheets[this.data].title }}
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
         sheets: sheetsRef
     },
     mounted() {
-        // console.log(this.sheets[]);
+        console.log(this.sheets[this.data]);
     },
     methods: {
         setHash() {
