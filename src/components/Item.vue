@@ -5,13 +5,24 @@
 </template>
 
 <script>
+
+import {db} from '@/fb/index';
+
+let sheetsRef = db.ref('sheets');
+
 export default {
     components: {},
     props: ['data'],
     data() {
         return {
-
+            sheets: {}
         }
+    },
+    firebase: {
+        sheets: sheetsRef
+    },
+    mounted() {
+        console.log(db.ref('sheets/' + this.data + "/title"));
     },
     methods: {
         setHash() {
