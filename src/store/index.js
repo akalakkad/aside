@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        snippet: ''
+        snippet: '',
         currentSheet: "mysheet"
     },
     mutations: {
