@@ -4,9 +4,12 @@
     <Sheet :sheetInfo="sheetData"></Sheet>
     <div style="width: 40%;">
         Parent
+        <br/>
         <Contents v-if="sheetData.parent" :content="sheetData.parent"></Contents>
         <br />
         Child
+        <br />
+        <br />
         <Contents v-if="sheetData.child" :content="sheetData.child"></Contents>
 
     </div>
