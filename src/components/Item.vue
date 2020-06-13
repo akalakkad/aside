@@ -22,7 +22,7 @@ export default {
         sheets: sheetsRef
     },
     mounted() {
-        console.log(db.ref('sheets/' + this.data + "/title"));
+        // console.log(this.sheets[]);
     },
     methods: {
         setHash() {
