@@ -1,7 +1,7 @@
 <template>
   <div class="toolbar-container">
       <span style="font-size: 24px">
-          My Thread
+          Aside
       </span>
       <AsideButton></AsideButton>
   </div>

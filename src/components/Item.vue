@@ -1,13 +1,12 @@
 <template>
   <div @click="setHash" class="item-container">
-      {{ sheets[data].title }}
+      {{ sheets[this.data].title }}
   </div>
 </template>
 
 <script>
 
 import {db} from '@/fb/index';
-
 let sheetsRef = db.ref('sheets');
 
 export default {
@@ -20,9 +19,6 @@ export default {
     },
     firebase: {
         sheets: sheetsRef
-    },
-    mounted() {
-        
     },
     methods: {
         setHash() {
@@ -38,7 +34,7 @@ export default {
         min-height: 30px;
         height: auto;
         padding: 15px;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         background-color: #fff;
         border: solid #5a97e6 1px;
         border-radius: 6px;
