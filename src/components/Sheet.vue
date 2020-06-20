@@ -96,6 +96,7 @@ export default {
   border-radius: 6px;
   color: #3a4891;
   outline: none;
+  font-weight: 400;
 }
 
 .sheet-text {
@@ -120,6 +121,7 @@ export default {
   resize: none;
   outline: none;
   font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
   color: #3a4891;
 
   overflow-y: scroll;
